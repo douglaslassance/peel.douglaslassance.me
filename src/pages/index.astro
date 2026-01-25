@@ -1,7 +1,8 @@
 ---
+import '../styles/global.css';
 ---
 
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/png" href="/icon.png" />
@@ -9,50 +10,139 @@
 		<meta name="generator" content={Astro.generator} />
 		<title>Peel - Browse your files by tags</title>
 		<meta name="description" content="A powerful macOS app to browse your files by tags" />
+		<style>
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
+
+			@keyframes float {
+				0%, 100% {
+					transform: translateY(0);
+				}
+				50% {
+					transform: translateY(-10px);
+				}
+			}
+			
+			.animate-fade-in {
+				animation: fadeIn 0.8s ease-out;
+			}
+			
+			.animate-fade-in-up {
+				animation: fadeInUp 0.8s ease-out backwards;
+			}
+			
+			.animate-float {
+				animation: float 3s ease-in-out infinite;
+			}
+			
+			[data-delay="0.2s"] {
+				animation-delay: 0.2s;
+			}
+			
+			[data-delay="0.4s"] {
+				animation-delay: 0.4s;
+			}
+			
+			[data-delay="0.5s"] {
+				animation-delay: 0.5s;
+			}
+			
+			[data-delay="0.7s"] {
+				animation-delay: 0.7s;
+			}
+			
+			[data-delay="0.85s"] {
+				animation-delay: 0.85s;
+			}
+			
+			[data-delay="1s"] {
+				animation-delay: 1s;
+			}
+			
+			[data-delay="1.2s"] {
+				animation-delay: 1.2s;
+			}
+			
+			:root {
+				--primary: #bd93f9;
+			}
+			
+			body {
+				font-family: 'SF Pro Text', 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto, sans-serif;
+			}
+		</style>
 	</head>
-	<body>
-		<main>
-			<div class="hero">
-				<img src="/icon.png" alt="Peel icon" class="icon" />
-				<h1>Peel</h1>
+	<body class="min-h-screen flex flex-col" style="background: radial-gradient(ellipse at center, #ffffff 0%, #f5f3f8 40%, #d4c5e0 100%);">
+		<main class="flex-1 flex flex-col">
+			<!-- Hero Section -->
+			<div class="flex-1 flex flex-col items-center justify-center px-8 py-16 text-center max-w-3xl mx-auto animate-fade-in">
+				<img src="/icon.png" alt="Peel icon" class="w-[200px] h-[200px] mt-24 mb-2 animate-float" style="filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));" />
+				<h1 class="text-6xl font-bold mb-0 tracking-tight text-[#1d1d1f] animate-fade-in-up" data-delay="0.2s">Peel</h1>
 			</div>
 
-			<div class="features">
-				<div class="feature-card hero-card">
-					<div class="feature-icon">
-						<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-							<path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
-						</svg>
+			<!-- Features Section -->
+			<div class="w-full max-w-5xl mx-auto px-8 pb-8 animate-fade-in" data-delay="0.4s">
+				<!-- Hero Card -->
+				<div class="card bg-white/95 backdrop-blur-xl shadow-xl border border-black/5 mb-8 hover:-translate-y-1 transition-all duration-300 hover:shadow-2xl animate-fade-in-up rounded-3xl" data-delay="0.5s">
+					<div class="card-body p-10 text-center">
+						<div class="flex justify-center mb-4 text-[#bd93f9]">
+							<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+								<path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+							</svg>
+						</div>
+						<h2 class="card-title text-3xl font-bold justify-center mb-4 text-[#1d1d1f]">Say goodbye to folders</h2>
+						<p class="text-lg text-[#6e6e73] leading-relaxed max-w-2xl mx-auto">Peel transforms how you get to your files. Browse by tags just like you would folders. Intuitive, powerful, and in line with how you think.</p>
 					</div>
-					<h2>Say goodbye to folders</h2>
-					<p>Peel transforms how you get to your files. Browse by tags just like you would folders. Intuitive, powerful, and in line with how you think.</p>
 				</div>
 
-				<div class="feature-grid">
-					<div class="feature-card">
-						<div class="feature-icon">
-							<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-								<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-							</svg>
+				<!-- Feature Grid -->
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<div class="card bg-white/95 backdrop-blur-xl shadow-xl border border-black/5 hover:-translate-y-1 transition-all duration-300 hover:shadow-2xl animate-fade-in-up rounded-3xl" data-delay="0.7s">
+						<div class="card-body p-10">
+							<div class="flex justify-center mb-4 text-[#bd93f9]">
+								<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+									<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+								</svg>
+							</div>
+							<h3 class="card-title text-xl font-semibold mb-3 text-[#1d1d1f]">Works with your files</h3>
+							<p class="text-[#6e6e73] leading-relaxed">Files can live anywhere on your system. Peel works with your existing organization.</p>
 						</div>
-						<h3>Works with your files</h3>
-						<p>Files can live anywhere on your system. Peel works with your existing organization.</p>
 					</div>
 
-					<div class="feature-card">
-						<div class="feature-icon">
-							<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-								<path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-							</svg>
+					<div class="card bg-white/95 backdrop-blur-xl shadow-xl border border-black/5 hover:-translate-y-1 transition-all duration-300 hover:shadow-2xl animate-fade-in-up rounded-3xl" data-delay="0.85s">
+						<div class="card-body p-10">
+							<div class="flex justify-center mb-4 text-[#bd93f9]">
+								<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+									<path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+								</svg>
+							</div>
+							<h3 class="card-title text-xl font-semibold mb-3 text-[#1d1d1f]">Great media support</h3>
+							<p class="text-[#6e6e73] leading-relaxed">Beautiful previews for images, GIFs, audio files, and more.</p>
 						</div>
-						<h3>Great media support</h3>
-						<p>Beautiful previews for images, GIFs, audio files, and more.</p>
 					</div>
 				</div>
 			</div>
 
-			<div class="actions">
-				<a href="https://apps.apple.com/app/peel" class="button primary" target="_blank" rel="noopener">
+			<!-- Actions Section -->
+			<div class="text-center py-12 animate-fade-in-up" data-delay="1s">
+				<a href="https://apps.apple.com/app/peel" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-7 py-4 text-lg font-medium text-white rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200" style="background-color: #bd93f9;">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
 						<path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
 					</svg>
@@ -60,12 +150,13 @@
 				</a>
 			</div>
 
-			<div class="download-section">
-				<div class="install-section">
-					<h2>or install for free with Homebrew</h2>
-					<div class="code-block">
-						<code>brew install --cask peel</code>
-						<button class="copy-button" onclick="copyToClipboard('brew install --cask peel')">
+			<!-- Download Section -->
+			<div class="w-full max-w-5xl mx-auto px-8 pb-16 animate-fade-in-up" data-delay="1.2s">
+				<div class="text-center max-w-2xl mx-auto">
+					<h2 class="text-2xl font-semibold mb-4 text-[#1d1d1f]">or install for free with Homebrew</h2>
+					<div class="flex items-center justify-between bg-[#f5f5f7] border border-[#e5e5e7] rounded-lg px-5 py-4 mt-4">
+						<code class="flex-1 text-left font-mono text-[#1d1d1f]">brew install --cask peel</code>
+						<button onclick="copyToClipboard('brew install --cask peel')" class="btn btn-ghost btn-sm text-[#6e6e73] hover:bg-black/5">
 							<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 								<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
 								<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -75,362 +166,38 @@
 				</div>
 			</div>
 
-			<div class="spacer"></div>
-
-			<footer>
-				<p>© 2026 <a href="https://douglaslassance.me" target="_blank" rel="noopener">Douglas Lassance</a></p>
-				<div class="footer-links">
-					<a href="https://ko-fi.com/douglaslassance" target="_blank" rel="noopener" class="footer-icon" aria-label="Support on Ko-fi">
-						<img src="/ko-fi.svg" alt="Ko-fi" width="24" height="24" />
-					</a>
-					<a href="https://www.producthunt.com/posts/peel" target="_blank" rel="noopener" class="footer-icon" aria-label="View on Product Hunt">
-						<img src="/producthunt.svg" alt="Product Hunt" width="24" height="24" />
-					</a>
-				</div>
-			</footer>
+			<!-- Spacer -->
+			<div class="h-16 md:h-32"></div>
 		</main>
 
+		<!-- Footer -->
+		<footer class="bg-[#1c1c1e] text-[#b4b4b8] py-8">
+			<div class="container mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+				<p class="text-sm m-0">© 2026 <a href="https://douglaslassance.me" target="_blank" rel="noopener" class="text-[#bd93f9] hover:underline">Douglas Lassance</a></p>
+				<div class="flex gap-4 items-center">
+					<a href="https://ko-fi.com/douglaslassance" target="_blank" rel="noopener" class="opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-200" aria-label="Support on Ko-fi">
+						<img src="/ko-fi.svg" alt="Ko-fi" width="24" height="24" style="filter: brightness(0) invert(1);" />
+					</a>
+					<a href="https://www.producthunt.com/posts/peel" target="_blank" rel="noopener" class="opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-200" aria-label="View on Product Hunt">
+						<img src="/producthunt.svg" alt="Product Hunt" width="24" height="24" style="filter: brightness(0) invert(1);" />
+					</a>
+				</div>
+			</div>
+		</footer>
+
 		<script>
-			function copyToClipboard(text) {
+			function copyToClipboard(text: string) {
 				navigator.clipboard.writeText(text).then(() => {
-					const button = document.querySelector('.copy-button');
-					const originalHTML = button.innerHTML;
-					button.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-					setTimeout(() => {
-						button.innerHTML = originalHTML;
-					}, 2000);
+					const button = document.querySelector('.btn-ghost') as HTMLButtonElement;
+					if (button) {
+						const originalHTML = button.innerHTML;
+						button.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+						setTimeout(() => {
+							button.innerHTML = originalHTML;
+						}, 2000);
+					}
 				});
 			}
 		</script>
-
-		<style>
-			:root {
-				--primary: #bd93f9;
-				--primary-hover: #a374e6;
-				--text: #1d1d1f;
-				--text-secondary: #6e6e73;
-				--bg: #ffffff;
-				--border: #e5e5e7;
-				--code-bg: #f5f5f7;
-			}
-
-			* {
-				box-sizing: border-box;
-				margin: 0;
-				padding: 0;
-			}
-
-			body {
-				font-family: 'SF Pro Text', 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto, sans-serif;
-				background: radial-gradient(ellipse at center, #ffffff 0%, #f5f3f8 40%, #d4c5e0 100%);
-				color: var(--text);
-				line-height: 1.6;
-				min-height: 100vh;
-				display: flex;
-				flex-direction: column;
-			}
-
-			main {
-				flex: 1;
-				display: flex;
-				flex-direction: column;
-			}
-
-			.hero {
-				flex: 1;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				padding: 4rem 2rem;
-				text-align: center;
-				max-width: 800px;
-				margin: 0 auto;
-			}
-
-			.icon {
-				width: 200px;
-				height: 200px;
-				margin-top: 6rem;
-				margin-bottom: 0.5rem;
-				filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15))
-						drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
-				animation: float 3s ease-in-out infinite;
-			}
-
-			h1 {
-				font-size: 4rem;
-				font-weight: 700;
-				margin-bottom: 0rem;
-				letter-spacing: -0.03em;
-				animation: fadeInUp 0.8s ease-out 0.2s backwards;
-			}
-
-			.tagline {
-				font-size: 1.5rem;
-				color: var(--text-secondary);
-				margin-bottom: 3rem;
-			}
-
-			.actions {
-				text-align: center;
-				padding: 3rem 2rem;
-			}
-
-			.button {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.5rem;
-				padding: 0.875rem 1.75rem;
-				font-size: 1.125rem;
-				font-weight: 500;
-				text-decoration: none;
-				border-radius: 12px;
-				transition: all 0.2s ease;
-			}
-
-			.button.primary {
-				background: var(--primary);
-				color: white;
-			}
-
-			.button.primary:hover {
-				background: var(--primary-hover);
-				transform: translateY(-2px);
-				box-shadow: 0 8px 16px rgba(0, 122, 255, 0.3);
-			}
-
-			.features {
-				width: 100%;
-				max-width: 1000px;
-				margin: 0 auto;
-				padding: 0 2rem 4rem;
-			}
-
-			.feature-card {
-				background: rgba(255, 255, 255, 0.95);
-				backdrop-filter: blur(10px);
-				border-radius: 20px;
-				padding: 2.5rem;
-				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-				border: 1px solid rgba(0, 0, 0, 0.05);
-				transition: all 0.3s ease;
-			}
-
-			.feature-card:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
-				border-color: rgba(0, 0, 0, 0.08);
-			}
-
-			.hero-card {
-				text-align: center;
-				margin-bottom: 2rem;
-				padding: 3rem 2.5rem;
-			}
-
-			.hero-card h2 {
-				font-size: 2rem;
-				font-weight: 700;
-				margin-bottom: 1rem;
-				color: var(--text);
-			}
-
-			.hero-card p {
-				font-size: 1.125rem;
-				color: var(--text-secondary);
-				line-height: 1.7;
-				max-width: 600px;
-				margin: 0 auto;
-			}
-
-			.feature-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-				gap: 2rem;
-			}
-
-			.feature-card h3 {
-				font-size: 1.375rem;
-				font-weight: 600;
-				margin-bottom: 0.75rem;
-				color: var(--text);
-			}
-
-			.feature-card p {
-				color: var(--text-secondary);
-				line-height: 1.6;
-			}
-
-			.feature-icon {
-				font-size: 3rem;
-				margin-bottom: 1rem;
-				color: var(--primary);
-				display: flex;
-				justify-content: center;
-			}
-
-			.download-section {
-				width: 100%;
-				max-width: 1000px;
-				margin: 0 auto;
-				padding: 0 2rem 4rem;
-			}
-
-			.install-section {
-				width: 100%;
-				max-width: 600px;
-				margin: 0 auto;
-				text-align: center;
-			}
-
-			.install-section h2 {
-				font-size: 1.5rem;
-				margin-bottom: 1rem;
-				font-weight: 600;
-			}
-
-			.code-block {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				background: var(--code-bg);
-				border: 1px solid var(--border);
-				border-radius: 8px;
-				padding: 1rem 1.25rem;
-				margin-top: 1rem;
-			}
-
-			code {
-				font-family: 'SF Mono', Monaco, 'Courier New', monospace;
-				font-size: 0.95rem;
-				color: var(--text);
-				flex: 1;
-				text-align: left;
-			}
-
-			.copy-button {
-				background: transparent;
-				border: none;
-				color: var(--text-secondary);
-				cursor: pointer;
-				padding: 0.5rem;
-				border-radius: 6px;
-				transition: all 0.2s ease;
-				display: flex;
-				align-items: center;
-			}
-
-			.copy-button:hover {
-				background: rgba(0, 0, 0, 0.05);
-				color: var(--text);
-			}
-
-			.spacer {
-				height: 4rem;
-			}
-
-			footer {
-				padding: 2rem;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				background: #1c1c1e;
-				color: #b4b4b8;
-				font-size: 0.875rem;
-			}
-
-			footer p {
-				margin: 0;
-			}
-
-			footer a {
-				color: #bd93f9;
-				text-decoration: none;
-			}
-
-			footer a:hover {
-				text-decoration: underline;
-			}
-
-			.footer-links {
-				display: flex;
-				gap: 1rem;
-				align-items: center;
-			}
-
-			.footer-icon {
-				display: flex;
-				align-items: center;
-				transition: all 0.2s ease;
-				opacity: 0.8;
-			}
-
-			.footer-icon img {
-				filter: brightness(0) invert(1);
-			}
-
-			.footer-icon:hover {
-				opacity: 1;
-				transform: scale(1.1);
-				text-decoration: none !important;
-			}
-
-			@media (max-width: 768px) {
-				h1 {
-					font-size: 3rem;
-				}
-
-				.tagline {
-					font-size: 1.25rem;
-				}
-
-				.icon {
-					width: 140px;
-					height: 140px;
-					margin-top: 4rem;
-				}
-
-				header {
-					top: 1rem;
-					right: 1rem;
-				}
-
-				footer {
-					flex-direction: column;
-					gap: 1rem;
-					text-align: center;
-				}
-
-				.hero {
-					padding: 2rem 1.5rem;
-				}
-
-				.features {
-					padding: 0 1.5rem 2rem;
-				}
-
-				.hero-card {
-					padding: 2rem 1.5rem;
-				}
-
-				.hero-card h2 {
-					font-size: 1.5rem;
-				}
-
-				.feature-grid {
-					grid-template-columns: 1fr;
-					gap: 1.5rem;
-				}
-
-				.feature-card {
-					padding: 2rem;
-				}
-
-				.download-section {
-					padding: 0 1.5rem 2rem;
-				}
-			}
-		</style>
 	</body>
 </html>
