@@ -6,10 +6,24 @@ import '../styles/global.css';
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/png" href="/icon.png" />
+		<link rel="apple-touch-icon" href="/icon.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Peel</title>
-		<meta name="description" content="Browse different" />
+		<meta name="description" content="Peel transforms how you browse for files. Handle tags like folders with full flexibility and discoverability. Works with any file on your Mac." />
+		
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Peel" />
+		<meta property="og:description" content="Peel transforms how you browse for files. Handle tags like folders with full flexibility and discoverability." />
+		<meta property="og:image" content="https://peel.douglaslassance.me/icon.png" />
+		<meta property="og:url" content="https://peel.douglaslassance.me" />
+		
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Peel - Browse Files with Tags Like Folders" />
+		<meta name="twitter:description" content="Peel transforms how you browse for files. Handle tags like folders with full flexibility and discoverability." />
+		<meta name="twitter:image" content="https://peel.douglaslassance.me/icon.png" />
 		<style>
 			@keyframes fadeInUp {
 				from {
@@ -82,19 +96,34 @@ import '../styles/global.css';
 			
 			:root {
 				--primary: #bd93f9;
+				--text-primary: #1d1d1f;
+				--text-secondary: #6e6e73;
+				--text-tertiary: #b4b4b8;
+				--bg-code: #f5f5f7;
+				--border-light: #e5e5e7;
+				--footer-bg: #1c1c1e;
 			}
 			
 			body {
 				font-family: 'SF Pro Text', 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto, sans-serif;
+				background: radial-gradient(ellipse at center, #ffffff 0%, #f5f3f8 40%, #d4c5e0 100%);
+			}
+			
+			.icon-shadow {
+				filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
+			}
+			
+			.icon-invert {
+				filter: brightness(0) invert(1);
 			}
 		</style>
 	</head>
-	<body class="min-h-screen flex flex-col" style="background: radial-gradient(ellipse at center, #ffffff 0%, #f5f3f8 40%, #d4c5e0 100%);">
+	<body class="min-h-screen flex flex-col">
 		<main class="flex-1 flex flex-col">
 			<!-- Hero Section -->
 			<div class="flex-1 flex flex-col items-center justify-center px-8 py-16 text-center max-w-3xl mx-auto animate-fade-in">
-				<img src="/icon.png" alt="Peel icon" class="w-[200px] h-[200px] mt-24 mb-2 animate-float" style="filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));" />
-				<h1 class="text-6xl font-bold mb-0 tracking-tight text-[#1d1d1f] animate-fade-in-up" data-delay="0.2s">Peel</h1>
+				<img src="/icon.png" alt="Peel app icon - a stylized purple tag symbol" class="w-[200px] h-[200px] mt-24 mb-2 animate-float icon-shadow" />
+				<h1 class="text-6xl font-bold mb-0 tracking-tight text-[var(--text-primary)] animate-fade-in-up" data-delay="0.2s">Peel</h1>
 			</div>
 
 			<!-- Features Section -->
@@ -102,13 +131,13 @@ import '../styles/global.css';
 				<!-- Hero Card -->
 				<div class="card bg-white/95 backdrop-blur-xl shadow-xl border border-black/5 mb-8 hover:-translate-y-1 transition-all duration-300 hover:shadow-2xl animate-fade-in-up rounded-3xl" data-delay="0.5s">
 					<div class="card-body p-10 text-center">
-						<div class="flex justify-center mb-4 text-[#bd93f9]">
+						<div class="flex justify-center mb-4 text-[var(--primary)]" aria-hidden="true">
 							<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
 								<path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
 							</svg>
 						</div>
-						<h2 class="card-title text-3xl font-bold justify-center mb-4 text-[#1d1d1f]">Browse different</h2>
-						<p class="text-lg text-[#6e6e73] leading-relaxed max-w-2xl mx-auto">Peel transforms how you browse for files. By handling tags like folders, you retain all their flexibility while not compromising on discoverability.</p>
+						<h2 class="card-title text-3xl font-bold justify-center mb-4 text-[var(--text-primary)]">Browse different</h2>
+						<p class="text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto">Peel transforms how you browse for files. By handling tags like folders, you retain all their flexibility while not compromising on discoverability.</p>
 					</div>
 				</div>
 
@@ -116,25 +145,25 @@ import '../styles/global.css';
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 					<div class="card bg-white/95 backdrop-blur-xl shadow-xl border border-black/5 hover:-translate-y-1 transition-all duration-300 hover:shadow-2xl animate-fade-in-up rounded-3xl" data-delay="0.7s">
 						<div class="card-body p-10">
-							<div class="flex justify-center mb-4 text-[#bd93f9]">
+							<div class="flex justify-center mb-4 text-[var(--primary)]" aria-hidden="true">
 								<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
 									<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
 								</svg>
 							</div>
-							<h3 class="card-title text-xl font-semibold mb-3 text-[#1d1d1f]">Works with your files</h3>
-							<p class="text-[#6e6e73] leading-relaxed">Peel is not opinionated, it works with any file living anywhere on your system.</p>
+							<h3 class="card-title text-xl font-semibold mb-3 text-[var(--text-primary)]">Works with your files</h3>
+							<p class="text-[var(--text-secondary)] leading-relaxed">Peel is not opinionated, it works with any file living anywhere on your system.</p>
 						</div>
 					</div>
 
 					<div class="card bg-white/95 backdrop-blur-xl shadow-xl border border-black/5 hover:-translate-y-1 transition-all duration-300 hover:shadow-2xl animate-fade-in-up rounded-3xl" data-delay="0.85s">
 						<div class="card-body p-10">
-							<div class="flex justify-center mb-4 text-[#bd93f9]">
+							<div class="flex justify-center mb-4 text-[var(--primary)]" aria-hidden="true">
 								<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
 									<path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
 								</svg>
 							</div>
-							<h3 class="card-title text-xl font-semibold mb-3 text-[#1d1d1f]">Great media support</h3>
-							<p class="text-[#6e6e73] leading-relaxed">Beautiful previews for images, GIFs, audio files, and more.</p>
+							<h3 class="card-title text-xl font-semibold mb-3 text-[var(--text-primary)]">Great media support</h3>
+							<p class="text-[var(--text-secondary)] leading-relaxed">Beautiful previews for images, GIFs, audio files, and more.</p>
 						</div>
 					</div>
 				</div>
@@ -142,8 +171,8 @@ import '../styles/global.css';
 
 			<!-- Actions Section -->
 			<div class="text-center py-12 animate-fade-in-up" data-delay="1s">
-				<a href="https://apps.apple.com/app/peel" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-7 py-4 text-lg font-medium text-white rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200" style="background-color: #bd93f9;">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+				<a href="https://apps.apple.com/app/peel" target="_blank" rel="noopener" aria-label="Purchase Peel on the App Store (opens in new window)" class="inline-flex items-center gap-2 px-7 py-4 text-lg font-medium text-white rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200" style="background-color: var(--primary);">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 						<path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
 					</svg>
 					Purchase on App Store
@@ -153,11 +182,12 @@ import '../styles/global.css';
 			<!-- Download Section -->
 			<div class="w-full max-w-5xl mx-auto px-8 pb-16 animate-fade-in-up" data-delay="1.2s">
 				<div class="text-center max-w-2xl mx-auto">
-					<h2 class="text-2xl font-semibold mb-4 text-[#1d1d1f]">or install for free with Homebrew</h2>
-					<div class="flex items-center justify-between bg-[#f5f5f7] border border-[#e5e5e7] rounded-lg px-5 py-4 mt-4">
-						<code class="flex-1 text-left font-mono text-[#1d1d1f]">brew install --cask peel</code>
-						<button onclick="copyToClipboard('brew install --cask peel')" class="btn btn-ghost btn-sm text-[#6e6e73] hover:bg-black/5">
-							<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<h2 class="text-2xl font-semibold mb-4 text-[var(--text-primary)]">or install for free with Homebrew</h2>
+					<div class="flex items-center justify-between bg-[var(--bg-code)] border border-[var(--border-light)] rounded-lg px-5 py-4 mt-4">
+						<code class="flex-1 text-left font-mono text-[var(--text-primary)]">brew install --cask peel</code>
+						<button onclick="copyToClipboard('brew install --cask peel')" aria-label="Copy Homebrew command to clipboard" class="btn btn-ghost btn-sm text-[var(--text-secondary)] hover:bg-black/5">
+							<span class="sr-only">Copy to clipboard</span>
+							<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
 								<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
 								<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
 							</svg>
@@ -175,27 +205,29 @@ import '../styles/global.css';
 			<div class="container mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
 				<p class="text-sm m-0">© 2026 <a href="https://douglaslassance.me" target="_blank" rel="noopener" class="text-[#bd93f9] hover:underline">Douglas Lassance</a></p>
 				<div class="flex gap-4 items-center">
-					<a href="https://ko-fi.com/douglaslassance" target="_blank" rel="noopener" class="opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-200" aria-label="Support on Ko-fi">
-						<img src="/ko-fi.svg" alt="Ko-fi" width="24" height="24" style="filter: brightness(0) invert(1);" />
+					<a href="https://ko-fi.com/douglaslassance" target="_blank" rel="noopener" class="opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-200" aria-label="Support on Ko-fi (opens in new window)">
+						<img src="/ko-fi.svg" alt="" width="24" height="24" class="icon-invert" />
 					</a>
-					<a href="https://www.producthunt.com/posts/peel" target="_blank" rel="noopener" class="opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-200" aria-label="View on Product Hunt">
-						<img src="/producthunt.svg" alt="Product Hunt" width="24" height="24" style="filter: brightness(0) invert(1);" />
+					<a href="https://www.producthunt.com/posts/peel" target="_blank" rel="noopener" class="opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-200" aria-label="View on Product Hunt (opens in new window)">
+						<img src="/producthunt.svg" alt="" width="24" height="24" class="icon-invert" />
 					</a>
 				</div>
 			</div>
 		</footer>
 
-		<script>
-			function copyToClipboard(text: string) {
+		<script is:inline>
+			function copyToClipboard(text) {
 				navigator.clipboard.writeText(text).then(() => {
-					const button = document.querySelector('.btn-ghost') as HTMLButtonElement;
+					const button = document.querySelector('.btn-ghost');
 					if (button) {
 						const originalHTML = button.innerHTML;
-						button.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+						button.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>';
 						setTimeout(() => {
 							button.innerHTML = originalHTML;
 						}, 2000);
 					}
+				}).catch((err) => {
+					console.error('Failed to copy text: ', err);
 				});
 			}
 		</script>
