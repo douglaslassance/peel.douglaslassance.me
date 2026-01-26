@@ -1,4 +1,24 @@
 @import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+	name: "peel";
+	default: true;
+	color-scheme: light;
+
+	--color-base-100: oklch(100% 0 0);
+	--color-base-200: oklch(98% 0.02 300);
+	--color-base-300: oklch(95% 0.03 300);
+	--color-base-content: oklch(20% 0.05 300);
+	--color-primary: oklch(75% 0.15 300);
+	--color-primary-content: oklch(100% 0 0);
+	--color-neutral: oklch(20% 0.02 300);
+	--color-neutral-content: oklch(95% 0.01 300);
+
+	--radius-box: 1.5rem;
+	--radius-field: 0.75rem;
+	--border: 0px;
+}
 
 .sr-only {
 	position: absolute;
