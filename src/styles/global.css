@@ -86,3 +86,7 @@ body {
 [data-theme="peel-dark"] body {
 	background: radial-gradient(ellipse at center, #1a1a2e 0%, #1e1e3f 40%, #2d1b4e 100%);
 }
+
+.hover-3d > :first-child {
+	outline: none !important;
+}
