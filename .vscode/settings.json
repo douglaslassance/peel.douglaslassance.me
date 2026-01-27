@@ -4,6 +4,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "chat.tools.terminal.autoApprove": {
-    "npm list": true
+    "npm list": true,
+    "npm install": true
   }
 }
