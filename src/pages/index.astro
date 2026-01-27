@@ -170,7 +170,7 @@ const description = "Peel transforms how you browse your files. By handling tags
 					<h2 class="text-2xl font-semibold mb-4">or install for free with Homebrew</h2>
 				<div class="flex items-center justify-between bg-code-field bg-base-200 border border-base-300 rounded-lg px-5 py-4 mt-4">
 						<code class="flex-1 text-left font-mono">brew install --cask peel</code>
-						<button onclick="copyToClipboard('brew install --cask peel')" aria-label="Copy Homebrew command to clipboard" class="btn btn-ghost btn-sm">
+						<button onclick="copyToClipboard('brew install --cask peel', this)" aria-label="Copy Homebrew command to clipboard" class="btn btn-ghost btn-sm">
 							<span class="sr-only">Copy to clipboard</span>
 							<Copy size={16} aria-hidden="true" />
 						</button>
@@ -220,9 +220,8 @@ const description = "Peel transforms how you browse your files. By handling tags
 		</script>
 
 		<script is:inline>
-			function copyToClipboard(text) {
+			function copyToClipboard(text, button) {
 				navigator.clipboard.writeText(text).then(() => {
-					const button = document.querySelector('.btn-ghost');
 					if (button) {
 						const originalHTML = button.innerHTML;
 						button.innerHTML = '<span class="sr-only">Copied!</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
