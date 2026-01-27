@@ -20,6 +20,25 @@
 	--border: 0px;
 }
 
+@plugin "daisyui/theme" {
+	name: "peel-dark";
+	prefersdark: true;
+	color-scheme: dark;
+
+	--color-base-100: oklch(20% 0.02 300);
+	--color-base-200: oklch(17% 0.02 300);
+	--color-base-300: oklch(14% 0.02 300);
+	--color-base-content: oklch(95% 0.01 300);
+	--color-primary: oklch(75% 0.15 300);
+	--color-primary-content: oklch(20% 0.02 300);
+	--color-neutral: oklch(95% 0.01 300);
+	--color-neutral-content: oklch(20% 0.02 300);
+
+	--radius-box: 1.5rem;
+	--radius-field: 0.75rem;
+	--border: 0px;
+}
+
 .sr-only {
 	position: absolute;
 	width: 1px;
@@ -30,4 +49,40 @@
 	clip: rect(0, 0, 0, 0);
 	white-space: nowrap;
 	border-width: 0;
+}
+
+body {
+	font-family: 'SF Pro Text', 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto, sans-serif;
+}
+
+.icon-shadow {
+	filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
+}
+
+[data-theme="peel"] .icon-invert {
+	filter: brightness(0) saturate(100%);
+}
+
+[data-theme="peel-dark"] .icon-invert {
+	filter: brightness(0) invert(1);
+}
+
+[data-theme="peel"] .icon-button-primary {
+	filter: brightness(0) invert(1);
+}
+
+[data-theme="peel-dark"] .icon-button-primary {
+	filter: brightness(0) saturate(100%);
+}
+
+[data-theme="peel"] .bg-code-field {
+	background-color: #f8f7fb;
+}
+
+[data-theme="peel"] body {
+	background: radial-gradient(ellipse at center, #ffffff 0%, #f5f3f8 40%, #d4c5e0 100%);
+}
+
+[data-theme="peel-dark"] body {
+	background: radial-gradient(ellipse at center, #1a1a2e 0%, #1e1e3f 40%, #2d1b4e 100%);
 }

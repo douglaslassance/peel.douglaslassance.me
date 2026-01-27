@@ -1,9 +1,9 @@
 ---
 import '../styles/global.css';
-import { Tag, FileText, Image, Apple, Copy, Check } from 'lucide-astro';
+import { Tag, FileText, Image, Apple, Copy, Check, Sun, Moon } from 'lucide-astro';
 ---
 
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth" data-theme="peel">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/png" href="/icon.png" />
@@ -94,32 +94,18 @@ import { Tag, FileText, Image, Apple, Copy, Check } from 'lucide-astro';
 			[data-delay="1.2s"] {
 				animation-delay: 1.2s;
 			}
-			
-			:root {
-				--primary: #bd93f9;
-				--text-primary: #1d1d1f;
-				--text-secondary: #6e6e73;
-				--text-tertiary: #b4b4b8;
-				--bg-code: #f5f5f7;
-				--border-light: #e5e5e7;
-				--footer-bg: #1c1c1e;
-			}
-			
-			body {
-				font-family: 'SF Pro Text', 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto, sans-serif;
-				background: radial-gradient(ellipse at center, #ffffff 0%, #f5f3f8 40%, #d4c5e0 100%);
-			}
-			
-			.icon-shadow {
-				filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
-			}
-			
-			.icon-invert {
-				filter: brightness(0) invert(1);
-			}
 		</style>
 	</head>
 	<body class="min-h-screen flex flex-col">
+		<!-- Theme Switcher -->
+		<div class="fixed top-4 right-4 z-50">
+			<label class="swap swap-rotate btn btn-ghost btn-circle">
+				<input type="checkbox" class="theme-controller" value="peel-dark" />
+				<Sun class="swap-off size-5" />
+				<Moon class="swap-on size-5" />
+			</label>
+		</div>
+		
 		<main class="flex-1 flex flex-col">
 			<!-- Hero Section -->
 			<div class="flex-1 flex flex-col items-center justify-center px-8 py-16 text-center max-w-3xl mx-auto animate-fade-in">
@@ -134,7 +120,7 @@ import { Tag, FileText, Image, Apple, Copy, Check } from 'lucide-astro';
 					<div></div>
 					<div></div>
 				</div>
-				<h1 class="text-6xl font-bold mb-0 tracking-tight text-[var(--text-primary)] animate-fade-in-up" data-delay="0.2s">Peel</h1>
+				<h1 class="text-6xl font-bold mb-0 tracking-tight text-base-content animate-fade-in-up" data-delay="0.2s">Peel</h1>
 			</div>
 
 			<!-- Features Section -->
@@ -176,8 +162,8 @@ import { Tag, FileText, Image, Apple, Copy, Check } from 'lucide-astro';
 
 			<!-- Actions Section -->
 			<div class="text-center py-12 animate-fade-in-up" data-delay="1s">
-	<a href="https://apps.apple.com/app/peel" target="_blank" rel="noopener" aria-label="Purchase Peel on the App Store (opens in new window)" class="btn btn-primary btn-lg p-8">
-				<img src="/apple.svg" class="icon-invert size-[1.2em]" />
+	<a href="https://apps.apple.com/app/peel" target="_blank" rel="noopener" aria-label="Purchase Peel on the App Store (opens in new window)" class="btn btn-primary btn-lg">
+				<img src="/apple.svg" class="size-[1.2em] icon-button-primary" aria-hidden="true" />
 					Purchase on App Store
 				</a>
 			</div>
@@ -186,7 +172,7 @@ import { Tag, FileText, Image, Apple, Copy, Check } from 'lucide-astro';
 			<div class="w-full max-w-5xl mx-auto px-8 pb-16 animate-fade-in-up" data-delay="1.2s">
 				<div class="text-center max-w-2xl mx-auto">
 					<h2 class="text-2xl font-semibold mb-4">or install for free with Homebrew</h2>
-					<div class="flex items-center justify-between bg-base-200 border border-base-300 rounded-lg px-5 py-4 mt-4">
+				<div class="flex items-center justify-between bg-code-field bg-base-200 border border-base-300 rounded-lg px-5 py-4 mt-4">
 						<code class="flex-1 text-left font-mono">brew install --cask peel</code>
 						<button onclick="copyToClipboard('brew install --cask peel')" aria-label="Copy Homebrew command to clipboard" class="btn btn-ghost btn-sm">
 							<span class="sr-only">Copy to clipboard</span>
@@ -201,9 +187,9 @@ import { Tag, FileText, Image, Apple, Copy, Check } from 'lucide-astro';
 		</main>
 
 		<!-- Footer -->
-		<footer class="footer footer-center bg-neutral text-neutral-content p-8">
+	<footer class="footer footer-center p-8 bg-base-200">
 			<div class="flex flex-col md:flex-row justify-between items-center gap-4 w-full max-w-5xl">
-				<p class="text-sm">© 2026 <a href="https://douglaslassance.me" target="_blank" rel="noopener" class="link link-hover text-primary">Douglas Lassance</a></p>
+			<p class="text-sm">© 2026 <a href="https://douglaslassance.me" target="_blank" rel="noopener" class="link link-hover link-primary">Douglas Lassance</a></p>
 				<div class="flex gap-4 items-center">
 					<a href="https://ko-fi.com/douglaslassance" target="_blank" rel="noopener" class="opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-200" aria-label="Support on Ko-fi (opens in new window)">
 						<img src="/ko-fi.svg" alt="" width="24" height="24" class="icon-invert" />
@@ -214,6 +200,28 @@ import { Tag, FileText, Image, Apple, Copy, Check } from 'lucide-astro';
 				</div>
 			</div>
 		</footer>
+
+		<script is:inline>
+			// Theme switcher
+			const themeController = document.querySelector('.theme-controller');
+			const html = document.documentElement;
+			
+			// Load saved theme or use default
+			const savedTheme = localStorage.getItem('theme') || 'peel';
+			html.setAttribute('data-theme', savedTheme);
+			if (themeController && savedTheme === 'peel-dark') {
+				themeController.checked = true;
+			}
+			
+			// Handle theme toggle
+			if (themeController) {
+				themeController.addEventListener('change', (e) => {
+					const newTheme = e.target.checked ? 'peel-dark' : 'peel';
+					html.setAttribute('data-theme', newTheme);
+					localStorage.setItem('theme', newTheme);
+				});
+			}
+		</script>
 
 		<script is:inline>
 			function copyToClipboard(text) {
