@@ -1,6 +1,9 @@
 ---
 import '../styles/global.css';
-import { Tag, FileText, Image, Apple, Copy, Check, Sun, Moon } from 'lucide-astro';
+import { Search, FileText, Image, Apple, Copy, Check, Sun, Moon } from 'lucide-astro';
+import FeatureCard from '../components/FeatureCard.astro';
+
+const description = "Peel transforms how you browse your files. By handling tags like folders, you retain all their flexibility while not compromising on discoverability.";
 ---
 
 <html lang="en" class="scroll-smooth" data-theme="peel">
@@ -11,19 +14,19 @@ import { Tag, FileText, Image, Apple, Copy, Check, Sun, Moon } from 'lucide-astr
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Peel</title>
-		<meta name="description" content="Peel transforms how you browse for files. Handle tags like folders with full flexibility and discoverability. Works with any file on your Mac." />
+		<meta name="description" content={description} />
 		
 		<!-- Open Graph -->
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="Peel" />
-		<meta property="og:description" content="Peel transforms how you browse for files. Handle tags like folders with full flexibility and discoverability." />
+		<meta property="og:description" content={description} />
 		<meta property="og:image" content="https://peel.douglaslassance.me/icon.png" />
 		<meta property="og:url" content="https://peel.douglaslassance.me" />
 		
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content="Peel - Browse Files with Tags Like Folders" />
-		<meta name="twitter:description" content="Peel transforms how you browse for files. Handle tags like folders with full flexibility and discoverability." />
+		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content="https://peel.douglaslassance.me/icon.png" />
 		<style>
 			@keyframes fadeInUp {
@@ -129,34 +132,27 @@ import { Tag, FileText, Image, Apple, Copy, Check, Sun, Moon } from 'lucide-astr
 				<div class="card bg-base-100 shadow-2xl mb-8 hover:-translate-y-1 transition-all duration-300 animate-fade-in-up" data-delay="0.5s">
 					<div class="card-body items-center text-center">
 						<div class="mb-4 text-primary" aria-hidden="true">
-							<Tag size={48} />
+							<Search size={48} />
 						</div>
-						<h2 class="card-title text-3xl mb-4">Browse different</h2>
-						<p class="text-lg text-base-content/70 max-w-2xl">Peel transforms how you browse for files. By handling tags like folders, you retain all their flexibility while not compromising on discoverability.</p>
+						<h2 class="card-title text-3xl">Browse different</h2>
+						<p class="text-lg text-base-content/70 max-w-2xl mb-5">{description}</p>
 					</div>
 				</div>
 
 				<!-- Feature Grid -->
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-					<div class="card bg-base-100 shadow-xl hover:-translate-y-1 transition-all duration-300 animate-fade-in-up" data-delay="0.7s">
-						<div class="card-body items-center text-center">
-							<div class="mb-4 text-primary" aria-hidden="true">
-								<FileText size={40} />
-							</div>
-							<h3 class="card-title text-xl mb-3">Works with your files</h3>
-							<p class="text-base-content/70">Peel is not opinionated, it works with any file living anywhere on your system.</p>
-						</div>
-					</div>
-
-					<div class="card bg-base-100 shadow-xl hover:-translate-y-1 transition-all duration-300 animate-fade-in-up" data-delay="0.85s">
-						<div class="card-body items-center text-center">
-							<div class="mb-4 text-primary" aria-hidden="true">
-								<Image size={40} />
-							</div>
-							<h3 class="card-title text-xl mb-3">Great media support</h3>
-							<p class="text-base-content/70">Beautiful previews for images, GIFs, audio files, and more.</p>
-						</div>
-					</div>
+					<FeatureCard 
+						icon={FileText}
+						title="Works with your files"
+						description="Peel is not opinionated, it works with any file living anywhere on your system."
+						delay="0.7s"
+					/>
+					<FeatureCard 
+						icon={Image}
+						title="Great media support"
+						description="Beautiful previews for images, GIFs, audio files, and more."
+						delay="0.85s"
+					/>
 				</div>
 			</div>
 
