@@ -1,0 +1,3 @@
+[    2533ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://formulae.brew.sh/api/cask/peel.json:0
+[   83185ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://formulae.brew.sh/api/cask/peel.json:0
+[  148023ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://formulae.brew.sh/api/cask/peel.json:0

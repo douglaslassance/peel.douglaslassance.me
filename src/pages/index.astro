@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { Search, FileText, Image, Apple, Copy, Check, Sun, Moon } from 'lucide-astro';
+import { Search, FileText, Image, Apple, Copy, Check, Sun, Moon, LayoutGrid, Tags } from 'lucide-astro';
 import FeatureCard from '../components/FeatureCard.astro';
 
 const description = "Peel transforms how you browse your files. By handling tags like folders, you retain all their flexibility while not compromising on discoverability.";
@@ -9,6 +9,7 @@ const description = "Peel transforms how you browse your files. By handling tags
 <html lang="en" class="scroll-smooth" data-theme="peel">
 	<head>
 		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" type="image/png" href="/icon.png" />
 		<link rel="apple-touch-icon" href="/icon.png" />
 		<meta name="viewport" content="width=device-width" />
@@ -112,18 +113,12 @@ const description = "Peel transforms how you browse your files. By handling tags
 		<main class="flex-1 flex flex-col">
 			<!-- Hero Section -->
 			<div class="flex-1 flex flex-col items-center justify-center px-8 py-16 text-center max-w-3xl mx-auto animate-fade-in">
-				<div class="hover-3d mt-24 mb-2">
-					<img src="/icon.png" alt="Peel app icon - a stylized purple tag symbol" class="w-[200px] h-[200px] icon-shadow" />
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
+				<div class="icon-tilt mt-24 mb-8" id="icon-tilt">
+					<div class="macos-icon">
+						<img src="/icon.png" alt="Peel app icon" class="w-[200px] h-[200px] block" />
+					</div>
 				</div>
-				<h1 class="text-6xl font-bold mb-0 tracking-tight text-base-content animate-fade-in-up" data-delay="0.2s">Peel</h1>
+				<h1 class="text-4xl font-bold mb-0 tracking-tight text-base-content animate-fade-in-up" data-delay="0.2s">Peel</h1>
 			</div>
 
 			<!-- Features Section -->
@@ -147,19 +142,31 @@ const description = "Peel transforms how you browse your files. By handling tags
 						description="Peel is not opinionated, it works with any file living anywhere on your system."
 						delay="0.7s"
 					/>
-					<FeatureCard 
+					<FeatureCard
 						icon={Image}
 						title="Great media support"
 						description="Beautiful previews for images, movies, GIFs, audio files, and more."
 						delay="0.85s"
+					/>
+					<FeatureCard
+						icon={LayoutGrid}
+						title="Amazing layouts"
+						description="Masonry layouts allowing you to see your entire image while not compromising on real estate."
+						delay="1s"
+					/>
+					<FeatureCard
+						icon={Tags}
+						title="Suggested tags"
+						description="Leveraging the local power of your computer to suggest relevant tags."
+						delay="1.1s"
 					/>
 				</div>
 			</div>
 
 			<!-- Actions Section -->
 			<div class="text-center py-12 animate-fade-in-up" data-delay="1s">
-	<a href="https://apps.apple.com/app/peel" target="_blank" rel="noopener" aria-label="Purchase Peel on the App Store (opens in new window)" class="btn btn-primary btn-lg">
-				<img src="/apple.svg" class="size-[1.2em] icon-button-primary" aria-hidden="true" />
+				<a href="https://apps.apple.com/app/peel" target="_blank" rel="noopener" aria-label="Download Peel on the App Store (opens in new window)" class="btn btn-primary btn-lg">
+					<img src="/apple.svg" class="size-[1.2em] icon-button-primary" aria-hidden="true" />
 					Download on App Store
 				</a>
 			</div>
@@ -175,6 +182,11 @@ const description = "Peel transforms how you browse your files. By handling tags
 							<Copy size={16} aria-hidden="true" />
 						</button>
 					</div>
+					<div class="mt-3">
+						<p class="text-sm text-base-content/40">
+							For direct download click <a id="dmg-link" href="#" class="link link-hover link-primary">here</a>
+						</p>
+					</div>
 				</div>
 			</div>
 
@@ -183,14 +195,14 @@ const description = "Peel transforms how you browse your files. By handling tags
 		</main>
 
 		<!-- Footer -->
-	<footer class="footer footer-center p-8 bg-base-200">
+	<footer class="footer footer-center p-8 bg-base-100">
 			<div class="flex flex-col md:flex-row justify-between items-center gap-4 w-full max-w-5xl">
 			<p class="text-sm">© 2026 <a href="https://douglaslassance.me" target="_blank" rel="noopener" class="link link-hover link-primary">Douglas Lassance</a></p>
 				<div class="flex gap-4 items-center">
 					<a href="https://ko-fi.com/douglaslassance" target="_blank" rel="noopener" class="opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-200" aria-label="Support on Ko-fi (opens in new window)">
 						<img src="/ko-fi.svg" alt="" width="24" height="24" class="icon-invert" />
 					</a>
-					<a href="https://www.producthunt.com/posts/peel" target="_blank" rel="noopener" class="opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-200" aria-label="View on Product Hunt (opens in new window)">
+					<a href="https://www.producthunt.com/@douglaslassance" target="_blank" rel="noopener" class="opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-200" aria-label="View on Product Hunt (opens in new window)">
 						<img src="/product-hunt.svg" alt="" width="24" height="24" class="icon-invert" />
 					</a>
 				</div>
@@ -233,6 +245,30 @@ const description = "Peel transforms how you browse your files. By handling tags
 					console.error('Failed to copy text: ', err);
 				});
 			}
+		</script>
+		<script is:inline>
+			const tilt = document.getElementById('icon-tilt');
+			if (tilt) {
+				tilt.addEventListener('mousemove', (e) => {
+					const rect = tilt.getBoundingClientRect();
+					const x = (e.clientX - rect.left) / rect.width - 0.5;
+					const y = (e.clientY - rect.top) / rect.height - 0.5;
+					tilt.style.transform = `perspective(600px) rotateY(${x * 18}deg) rotateX(${-y * 18}deg) scale(1.04)`;
+				});
+				tilt.addEventListener('mouseleave', () => {
+					tilt.style.transform = '';
+				});
+			}
+		</script>
+		<script is:inline>
+			fetch('https://formulae.brew.sh/api/cask/peel.json')
+				.then(r => r.ok ? r.json() : null)
+				.then(data => {
+					if (!data?.url) return;
+					const link = document.getElementById('dmg-link');
+					if (link) link.href = data.url;
+				})
+				.catch(() => {});
 		</script>
 	</body>
 </html>
