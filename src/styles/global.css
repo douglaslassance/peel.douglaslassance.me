@@ -25,9 +25,9 @@
 	prefersdark: true;
 	color-scheme: dark;
 
-	--color-base-100: oklch(18% 0 0);
-	--color-base-200: oklch(14% 0 0);
-	--color-base-300: oklch(11% 0 0);
+	--color-base-100: oklch(16% 0 0);
+	--color-base-200: oklch(13% 0 0);
+	--color-base-300: oklch(10% 0 0);
 	--color-base-content: oklch(95% 0 0);
 	--color-primary: oklch(57% 0.245 264);
 	--color-primary-content: oklch(100% 0 0);
@@ -67,9 +67,20 @@ body {
 	border-radius: 22.5%;
 	overflow: hidden;
 	box-shadow:
-		0 2px 4px rgba(0, 0, 0, 0.10),
-		0 8px 24px rgba(0, 0, 0, 0.22),
-		0 28px 72px rgba(0, 0, 0, 0.32),
+		0 2px 4px rgba(0, 0, 0, 0.15),
+		0 8px 20px rgba(0, 0, 0, 0.28),
+		0 20px 40px rgba(0, 0, 0, 0.22),
+		inset 0 0.5px 0 rgba(255, 255, 255, 0.20),
+		inset 0.5px 0 0 rgba(255, 255, 255, 0.10),
+		inset 0 -0.5px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* Dark mode: replace cast shadow with a soft light halo */
+[data-theme="peel-dark"] .macos-icon {
+	box-shadow:
+		0 0 10px rgba(255, 255, 255, 0.07),
+		0 0 30px rgba(255, 255, 255, 0.07),
+		0 0 60px rgba(255, 255, 255, 0.05),
 		inset 0 0.5px 0 rgba(255, 255, 255, 0.20),
 		inset 0.5px 0 0 rgba(255, 255, 255, 0.10),
 		inset 0 -0.5px 0 rgba(0, 0, 0, 0.35);
@@ -105,10 +116,6 @@ body {
 	filter: brightness(0) invert(1);
 }
 
-[data-theme="peel"] .bg-code-field {
-	background-color: #f0f0f0;
-}
-
 /* Use OS accent color in browsers that correctly map it (Safari, Chrome on macOS) */
 @supports (color: AccentColor) {
 	[data-theme="peel"],
@@ -119,19 +126,9 @@ body {
 }
 
 [data-theme="peel"] body {
-	background: radial-gradient(
-		in oklab ellipse at 50% 0%,
-		Canvas 0%,
-		Canvas 55%,
-		color-mix(in oklab, Canvas 60%, AccentColor) 100%
-	);
+	background-color: oklch(96% 0 0);
 }
 
 [data-theme="peel-dark"] body {
-	background: radial-gradient(
-		in oklab ellipse 90% 45% at 50% 0%,
-		color-mix(in oklab, oklch(18% 0.008 264) 75%, var(--color-primary)) 0%,
-		color-mix(in oklab, oklch(16% 0.004 264) 93%, var(--color-primary)) 45%,
-		oklch(14.5% 0.003 264) 100%
-	);
+	background-color: oklch(19% 0.003 264);
 }

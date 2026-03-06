@@ -11,8 +11,8 @@ const { icon: Icon, title, description, delay = "0s" } = Astro.props;
 
 <div class="card bg-base-100 shadow-xl hover:-translate-y-1 transition-all duration-300 animate-fade-in-up" data-delay={delay}>
 	<div class="card-body items-center text-center">
-		<div class="mb-4 text-primary" aria-hidden="true">
-			<Icon size={40} />
+		<div class="mt-4 mb-2 text-primary" aria-hidden="true">
+			<Icon size={40} stroke-width={1.5} />
 		</div>
 		<h3 class="card-title text-xl">{title}</h3>
 		<p class="text-base-content/70">{description}</p>
