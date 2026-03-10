@@ -1,9 +1,10 @@
 ---
 import '../styles/global.css';
-import { Search, FileText, Image, Apple, Copy, Check, Sun, Moon, LayoutGrid, Tags } from 'lucide-astro';
+import { Search, FileText, Image, Copy, Sun, Moon, LayoutGrid, Tags } from 'lucide-astro';
 import FeatureCard from '../components/FeatureCard.astro';
 
 const description = "Peel transforms how you browse your files. By handling tags like folders, you retain all their flexibility while not compromising on discoverability.";
+
 ---
 
 <html lang="en" class="scroll-smooth" data-theme="peel">
@@ -50,33 +51,16 @@ const description = "Peel transforms how you browse your files. By handling tags
 				}
 			}
 
-			@keyframes float {
-				0%, 100% {
-					transform: translateY(0);
-				}
-				50% {
-					transform: translateY(-10px);
-				}
-			}
-			
 			.animate-fade-in {
 				animation: fadeIn 0.8s ease-out;
 			}
-			
+
 			.animate-fade-in-up {
 				animation: fadeInUp 0.8s ease-out backwards;
 			}
 			
-			.animate-float {
-				animation: float 3s ease-in-out infinite;
-			}
-			
 			[data-delay="0.2s"] {
 				animation-delay: 0.2s;
-			}
-			
-			[data-delay="0.4s"] {
-				animation-delay: 0.4s;
 			}
 			
 			[data-delay="0.5s"] {
@@ -122,7 +106,7 @@ const description = "Peel transforms how you browse your files. By handling tags
 			</div>
 
 			<!-- Features Section -->
-			<div class="w-full max-w-5xl mx-auto px-8 pb-8 animate-fade-in" data-delay="0.4s">
+			<div class="w-full max-w-5xl mx-auto px-8 pb-8 animate-fade-in">
 				<!-- Hero Card -->
 				<div class="card bg-base-100 shadow-2xl mb-8 hover:-translate-y-1 transition-all duration-300 animate-fade-in-up" data-delay="0.5s">
 					<div class="card-body items-center text-center">
@@ -163,21 +147,13 @@ const description = "Peel transforms how you browse your files. By handling tags
 				</div>
 			</div>
 
-			<!-- Actions Section -->
-			<div class="text-center py-12 animate-fade-in-up" data-delay="1s">
-				<a href="https://apps.apple.com/app/peel" target="_blank" rel="noopener" aria-label="Download Peel on the App Store (opens in new window)" class="btn btn-primary btn-lg">
-					<img src="/apple.svg" class="size-[1.2em] icon-button-primary" aria-hidden="true" />
-					Download on App Store
-				</a>
-			</div>
-
 			<!-- Download Section -->
 			<div class="w-full max-w-5xl mx-auto px-8 pb-16 animate-fade-in-up" data-delay="1.2s">
 				<div class="text-center max-w-2xl mx-auto">
-					<h2 class="text-2xl font-semibold mb-4">or install with Homebrew</h2>
-				<div class="flex items-center justify-between bg-base-100 border border-base-300 rounded-lg px-5 py-4 mt-4">
-						<code class="flex-1 text-left font-mono">brew install --cask peel</code>
-						<button onclick="copyToClipboard('brew install --cask peel', this)" aria-label="Copy Homebrew command to clipboard" class="btn btn-ghost btn-sm">
+					<h2 class="text-2xl font-semibold mb-4">Install with Homebrew</h2>
+					<div class="flex items-center justify-between bg-base-100 border border-base-300 rounded-lg px-5 py-4 mt-4">
+						<code class="flex-1 text-left font-mono">brew tap douglaslassance/tap && brew install --cask peel</code>
+						<button onclick="copyToClipboard('brew tap douglaslassance/tap && brew install --cask peel', this)" aria-label="Copy Homebrew command to clipboard" class="btn btn-ghost btn-sm">
 							<span class="sr-only">Copy to clipboard</span>
 							<Copy size={16} aria-hidden="true" />
 						</button>
@@ -195,20 +171,9 @@ const description = "Peel transforms how you browse your files. By handling tags
 		</main>
 
 		<!-- Footer -->
-	<footer class="footer footer-center p-8 bg-base-100">
+		<footer class="footer footer-center p-8 bg-base-100">
 			<div class="flex flex-col md:flex-row justify-between items-center gap-4 w-full max-w-5xl">
-			<p class="text-sm">© 2026 <a href="https://douglaslassance.me" target="_blank" rel="noopener" class="link link-hover link-primary">Douglas Lassance</a></p>
-				<div class="flex gap-4 items-center">
-					<a href="https://ko-fi.com/douglaslassance" target="_blank" rel="noopener" class="opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-200" aria-label="Support on Ko-fi (opens in new window)">
-						<img src="/ko-fi.svg" alt="" width="24" height="24" class="icon-invert" />
-					</a>
-					<a href="https://www.producthunt.com/@douglaslassance" target="_blank" rel="noopener" class="opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-200" aria-label="View on Product Hunt (opens in new window)">
-						<img src="/product-hunt.svg" alt="" width="24" height="24" class="icon-invert" />
-					</a>
-					<a href="https://douglaslassance.gumroad.com/l/peel-pro" target="_blank" rel="noopener" class="opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-200" aria-label="Buy on Gumroad (opens in new window)">
-						<img src="/gumroad.svg" alt="" width="24" height="24" class="icon-invert" />
-					</a>
-				</div>
+				<p class="text-sm">© 2026 <a href="https://douglaslassance.me" target="_blank" rel="noopener" class="link link-hover link-primary">Douglas Lassance</a></p>
 			</div>
 		</footer>
 
@@ -264,12 +229,12 @@ const description = "Peel transforms how you browse your files. By handling tags
 			}
 		</script>
 		<script is:inline>
-			fetch('https://formulae.brew.sh/api/cask/peel.json')
+			fetch('https://storage.douglaslassance.me/peel/peel.json')
 				.then(r => r.ok ? r.json() : null)
 				.then(data => {
-					if (!data?.url) return;
+					if (!data?.latest) return;
 					const link = document.getElementById('dmg-link');
-					if (link) link.href = data.url;
+					if (link) link.href = `https://storage.douglaslassance.me/peel/peel-${data.latest}.dmg`;
 				})
 				.catch(() => {});
 		</script>
