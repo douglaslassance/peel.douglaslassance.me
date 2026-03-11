@@ -52,7 +52,7 @@
 }
 
 body {
-	font-family: 'SF Pro Text', 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto, sans-serif;
+	font-family: 'SF Pro Text', 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
 }
 
 .icon-tilt {
