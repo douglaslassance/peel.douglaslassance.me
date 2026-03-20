@@ -234,12 +234,12 @@ const description = "Peel transforms how you browse your files. By handling tags
 			}
 		</script>
 		<script is:inline>
-			fetch('https://storage.douglaslassance.me/peel/peel.json')
+			fetch('https://api.douglaslassance.me/peel')
 				.then(r => r.ok ? r.json() : null)
 				.then(data => {
 					if (!data?.latest) return;
 					const link = document.getElementById('dmg-link');
-					if (link) link.href = `https://storage.douglaslassance.me/peel/peel-${data.latest}.dmg`;
+					if (link) link.href = `https://api.douglaslassance.me/peel/download/${data.latest}`;
 				})
 				.catch(() => {});
 		</script>
