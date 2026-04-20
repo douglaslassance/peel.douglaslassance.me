@@ -84,16 +84,16 @@ const brewCommand = "brew install douglaslassance/tap/peel";
 			<!-- Features Section -->
 			<div class="w-full max-w-5xl mx-auto px-8 pb-8 animate-fade-in">
 				<!-- Hero Card -->
-				<div class="mb-8 animate-fade-in-up hover:-translate-y-1 transition-all duration-300" data-delay="0.5s">
+				<div class="mb-6 animate-fade-in-up hover:-translate-y-1 transition-all duration-300" data-delay="0.5s">
 					<Card>
-						<CardContent class="flex flex-col pt-8 pb-8 px-8 gap-3">
-							<div class="flex items-center gap-3">
+						<CardContent class="flex flex-col px-5 gap-2">
+							<div class="flex items-center gap-2">
 								<span class="inline-flex shrink-0 text-foreground/50" aria-hidden="true">
-									<Search size={22} strokeWidth={1.5} />
+									<Search size={18} strokeWidth={1.5} />
 								</span>
-								<h2 class="text-xl font-semibold leading-none">Browse different</h2>
+								<h2 class="text-base font-semibold leading-none">Browse different</h2>
 							</div>
-							<p class="text-base text-muted-foreground leading-relaxed">{description}</p>
+							<p class="text-sm text-muted-foreground leading-relaxed">{description}</p>
 						</CardContent>
 					</Card>
 				</div>
@@ -110,10 +110,10 @@ const brewCommand = "brew install douglaslassance/tap/peel";
 			<!-- Download Section -->
 			<div class="w-full max-w-5xl mx-auto px-8 pb-16 animate-fade-in-up" data-delay="1.2s">
 				<div class="text-center max-w-2xl mx-auto">
-					<h2 class="text-2xl font-semibold mb-4">
-						Install with <a href="https://brew.sh/" class="underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground transition-colors">Homebrew</a>
+					<h2 class="text-sm font-medium text-muted-foreground mb-3">
+						Install with <a href="https://brew.sh/" class="text-foreground underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground transition-colors">Homebrew</a>
 					</h2>
-					<div class="flex items-center justify-between bg-card ring-1 ring-foreground/10 rounded-xl px-5 py-4 mt-4 mx-auto max-w-lg">
+					<div class="flex items-center justify-between bg-card ring-1 ring-foreground/10 rounded-lg px-4 py-3 mx-auto max-w-lg">
 						<code class="flex-1 text-left font-mono text-sm">{brewCommand}</code>
 						<CopyButton client:load text={brewCommand} />
 					</div>

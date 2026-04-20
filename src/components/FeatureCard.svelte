@@ -11,7 +11,7 @@
 
 <div class="animate-fade-in-up hover:-translate-y-1 transition-all duration-300" style="animation-delay: {delay}">
 	<Card class="h-full">
-		<CardContent class="flex flex-col pt-6 pb-6 px-6 gap-2">
+		<CardContent class="flex flex-col px-5 gap-1.5">
 			<div class="flex items-center gap-2">
 				<span class="inline-flex shrink-0 text-foreground/50" aria-hidden="true">
 					<Icon size={16} strokeWidth={1.5} />
