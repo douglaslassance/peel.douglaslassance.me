@@ -1,134 +1,141 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@import "tw-animate-css";
 
-@plugin "daisyui/theme" {
-	name: "peel";
-	default: true;
-	color-scheme: light;
+@custom-variant dark (&:is(.dark *));
 
-	--color-base-100: oklch(100% 0 0);
-	--color-base-200: oklch(96% 0 0);
-	--color-base-300: oklch(92% 0 0);
-	--color-base-content: oklch(12% 0 0);
-	--color-primary: oklch(57% 0.245 264);
-	--color-primary-content: oklch(100% 0 0);
-	--color-neutral: oklch(12% 0 0);
-	--color-neutral-content: oklch(96% 0 0);
-
-	--radius-box: 1.5rem;
-	--radius-field: 0.75rem;
-	--border: 0px;
+:root {
+  --radius: 1rem;
+  --background: oklch(0.96 0 0);
+  --foreground: oklch(0.12 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.12 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.12 0 0);
+  --primary: oklch(0.57 0.245 264);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.92 0 0);
+  --secondary-foreground: oklch(0.12 0 0);
+  --muted: oklch(0.92 0 0);
+  --muted-foreground: oklch(0.50 0 0);
+  --accent: oklch(0.92 0 0);
+  --accent-foreground: oklch(0.12 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.88 0 0);
+  --input: oklch(0.88 0 0);
+  --ring: oklch(0.57 0.245 264);
 }
 
-@plugin "daisyui/theme" {
-	name: "peel-dark";
-	prefersdark: true;
-	color-scheme: dark;
-
-	--color-base-100: oklch(16% 0 0);
-	--color-base-200: oklch(13% 0 0);
-	--color-base-300: oklch(10% 0 0);
-	--color-base-content: oklch(95% 0 0);
-	--color-primary: oklch(57% 0.245 264);
-	--color-primary-content: oklch(100% 0 0);
-	--color-neutral: oklch(95% 0 0);
-	--color-neutral-content: oklch(18% 0 0);
-
-	--radius-box: 1.5rem;
-	--radius-field: 0.75rem;
-	--border: 0px;
+.dark {
+  --background: oklch(0.19 0.003 264);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.16 0 0);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.16 0 0);
+  --popover-foreground: oklch(0.95 0 0);
+  --primary: oklch(0.57 0.245 264);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.22 0 0);
+  --secondary-foreground: oklch(0.95 0 0);
+  --muted: oklch(0.22 0 0);
+  --muted-foreground: oklch(0.65 0 0);
+  --accent: oklch(0.25 0 0);
+  --accent-foreground: oklch(0.95 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.57 0.245 264);
 }
 
-.sr-only {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
-	border-width: 0;
+/* Use OS accent color where supported */
+@supports (color: AccentColor) {
+  :root, .dark {
+    --primary: AccentColor;
+    --primary-foreground: AccentColorText;
+    --ring: AccentColor;
+  }
 }
 
-body {
-	font-family: 'SF Pro Text', 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'SF Pro Text', 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  }
 }
 
 .icon-tilt {
-	display: inline-block;
-	transition: transform 0.15s ease-out;
+  display: inline-block;
+  transition: transform 0.15s ease-out;
 }
 
-/* macOS-style icon: rounded corners, emboss highlight, cast shadow */
 .macos-icon {
-	position: relative;
-	display: inline-block;
-	border-radius: 22.5%;
-	overflow: hidden;
-	box-shadow:
-		0 2px 4px rgba(0, 0, 0, 0.15),
-		0 8px 20px rgba(0, 0, 0, 0.28),
-		0 20px 40px rgba(0, 0, 0, 0.22),
-		inset 0 0.5px 0 rgba(255, 255, 255, 0.20),
-		inset 0.5px 0 0 rgba(255, 255, 255, 0.10),
-		inset 0 -0.5px 0 rgba(0, 0, 0, 0.35);
+  position: relative;
+  display: inline-block;
+  border-radius: 22.5%;
+  overflow: hidden;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 8px 20px rgba(0, 0, 0, 0.28),
+    0 20px 40px rgba(0, 0, 0, 0.22),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.20),
+    inset 0.5px 0 0 rgba(255, 255, 255, 0.10),
+    inset 0 -0.5px 0 rgba(0, 0, 0, 0.35);
 }
 
-/* Dark mode: replace cast shadow with a soft light halo */
-[data-theme="peel-dark"] .macos-icon {
-	box-shadow:
-		0 0 10px rgba(255, 255, 255, 0.07),
-		0 0 30px rgba(255, 255, 255, 0.07),
-		0 0 60px rgba(255, 255, 255, 0.05),
-		inset 0 0.5px 0 rgba(255, 255, 255, 0.20),
-		inset 0.5px 0 0 rgba(255, 255, 255, 0.10),
-		inset 0 -0.5px 0 rgba(0, 0, 0, 0.35);
+.dark .macos-icon {
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.07),
+    0 0 30px rgba(255, 255, 255, 0.07),
+    0 0 60px rgba(255, 255, 255, 0.05),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.20),
+    inset 0.5px 0 0 rgba(255, 255, 255, 0.10),
+    inset 0 -0.5px 0 rgba(0, 0, 0, 0.35);
 }
 
-/* Specular emboss overlay */
 .macos-icon::after {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(
-		150deg,
-		rgba(255, 255, 255, 0.10) 0%,
-		rgba(255, 255, 255, 0.04) 30%,
-		transparent 55%
-	);
-	pointer-events: none;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.10) 0%,
+    rgba(255, 255, 255, 0.04) 30%,
+    transparent 55%
+  );
+  pointer-events: none;
 }
 
-[data-theme="peel"] .icon-invert {
-	filter: brightness(0) saturate(100%);
+.icon-invert {
+  filter: brightness(0) saturate(100%);
 }
 
-[data-theme="peel-dark"] .icon-invert {
-	filter: brightness(0) invert(1);
-}
-
-[data-theme="peel"] .icon-button-primary {
-	filter: brightness(0) invert(1);
-}
-
-[data-theme="peel-dark"] .icon-button-primary {
-	filter: brightness(0) invert(1);
-}
-
-/* Use OS accent color in browsers that correctly map it (Safari, Chrome on macOS) */
-@supports (color: AccentColor) {
-	[data-theme="peel"],
-	[data-theme="peel-dark"] {
-		--color-primary: AccentColor;
-		--color-primary-content: AccentColorText;
-	}
-}
-
-[data-theme="peel"] body {
-	background-color: oklch(96% 0 0);
-}
-
-[data-theme="peel-dark"] body {
-	background-color: oklch(19% 0.003 264);
+.dark .icon-invert {
+  filter: brightness(0) invert(1);
 }
