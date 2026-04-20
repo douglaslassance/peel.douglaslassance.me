@@ -1,12 +1,11 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { Button } from "$lib/components/ui/button/index.js";
 
 	let isDark = $state(false);
 
-	$effect(() => {
-		const saved = localStorage.getItem("theme");
-		isDark = saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
-		document.documentElement.classList.toggle("dark", isDark);
+	onMount(() => {
+		isDark = document.documentElement.classList.contains('dark');
 	});
 
 	function toggle() {
