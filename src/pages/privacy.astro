@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { House } from 'lucide-svelte';
 import ThemeToggle from '../components/ThemeToggle.svelte';
 
 const lastUpdated = "May 2, 2026";
@@ -13,7 +14,7 @@ const lastUpdated = "May 2, 2026";
 		<link rel="apple-touch-icon" href="/icon.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Privacy Policy — Peel</title>
+		<title>Privacy — Peel</title>
 		<meta name="description" content="Privacy policy for the Peel macOS app." />
 
 		<!-- Prevent dark mode flash -->
@@ -30,75 +31,56 @@ const lastUpdated = "May 2, 2026";
 			<ThemeToggle client:load />
 		</div>
 
-		<main class="flex-1 w-full max-w-3xl mx-auto px-8 pt-24 pb-16">
-			<h1 class="text-4xl font-bold tracking-tight mb-2">Privacy Policy</h1>
-			<p class="text-sm text-muted-foreground mb-12">Last updated: {lastUpdated}</p>
+		<main class="flex-1 w-full max-w-2xl mx-auto px-8 pt-24 pb-16">
+			<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight text-balance">Privacy</h1>
+			<p class="text-muted-foreground text-sm mt-2">Last updated {lastUpdated}.</p>
 
-			<section class="space-y-4 mb-10">
-				<p class="text-base leading-relaxed">
-					Peel is a macOS application that helps you browse and organize files using tags. This policy describes what data Peel handles and how.
-				</p>
-				<p class="text-base leading-relaxed">
-					<strong>Short version:</strong> Peel does not collect personal data, does not use analytics or tracking, and does not send your files or tags anywhere. Everything stays on your Mac.
-				</p>
-			</section>
+			<p class="text-muted-foreground text-xl mt-8">
+				Peel does not collect personal data, does not use analytics or tracking, and does not transmit your files or tags. This page describes what data Peel handles and how.
+			</p>
 
-			<section class="space-y-3 mb-10">
-				<h2 class="text-xl font-semibold tracking-tight">Data stored on your device</h2>
-				<p class="text-base leading-relaxed">
-					Tags, security-scoped bookmarks, and app preferences are stored locally on your Mac. They are not transmitted to Peel or any third party. Uninstalling the app removes Peel's data from your device.
-				</p>
-			</section>
+			<h2 class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight mt-12">Data stored on your device</h2>
+			<p class="leading-7 mt-6">
+				Tags, security-scoped bookmarks, and application preferences are stored locally on your Mac. They are not transmitted to Peel or any third party. Uninstalling the application removes Peel's data from your device.
+			</p>
 
-			<section class="space-y-3 mb-10">
-				<h2 class="text-xl font-semibold tracking-tight">Network connections</h2>
-				<p class="text-base leading-relaxed">
-					Peel connects to the network only for the following purposes:
-				</p>
-				<ul class="list-disc pl-6 space-y-2 text-base leading-relaxed">
-					<li>
-						<strong>Software updates</strong> (non–Mac App Store builds only). Peel periodically checks for new versions by fetching an update feed from <code class="text-sm">storage.douglaslassance.me</code>. The request includes only the information typically present in any HTTP request (such as your IP address and macOS version) and is not used for tracking.
-					</li>
-					<li>
-						<strong>In-App Purchases</strong> (Mac App Store builds only). Purchases and receipt validation are handled by Apple's StoreKit framework. Peel never sees your payment information. Apple's privacy policy applies: <a href="https://www.apple.com/legal/privacy/" class="underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground transition-colors">apple.com/legal/privacy</a>.
-					</li>
-				</ul>
-			</section>
+			<h2 class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight mt-12">Network connections</h2>
+			<p class="leading-7 mt-6">
+				Peel connects to the network only for the following purposes:
+			</p>
+			<ul class="my-6 ml-6 list-disc [&>li]:mt-2 leading-7">
+				<li>
+					<strong>Software updates</strong> (non–Mac App Store builds only). Peel periodically checks for new versions by fetching an update feed from <code class="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">storage.douglaslassance.me</code>. The request includes only standard HTTP metadata such as your IP address and macOS version, and is not used for tracking.
+				</li>
+				<li>
+					<strong>In-App Purchases</strong> (Mac App Store builds only). Purchases and receipt validation are handled by Apple's StoreKit framework. Peel does not see your payment information. Apple's <a href="https://www.apple.com/legal/privacy/" class="font-medium underline underline-offset-4">privacy policy</a> applies.
+				</li>
+			</ul>
 
-			<section class="space-y-3 mb-10">
-				<h2 class="text-xl font-semibold tracking-tight">Files and folders</h2>
-				<p class="text-base leading-relaxed">
-					Peel reads files and folders that you explicitly grant access to via the macOS sandbox. File contents are processed entirely on your Mac for previews, waveform generation, and tag suggestions. No file content is uploaded.
-				</p>
-			</section>
+			<h2 class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight mt-12">Files and folders</h2>
+			<p class="leading-7 mt-6">
+				Peel only reads files and folders that you explicitly grant access to via the macOS sandbox. Previews, waveforms, and tag suggestions are computed entirely on your Mac. No file content is uploaded.
+			</p>
 
-			<section class="space-y-3 mb-10">
-				<h2 class="text-xl font-semibold tracking-tight">Analytics and tracking</h2>
-				<p class="text-base leading-relaxed">
-					Peel does not use analytics, telemetry, crash reporting, or advertising SDKs. There is no data collection.
-				</p>
-			</section>
+			<h2 class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight mt-12">Analytics and tracking</h2>
+			<p class="leading-7 mt-6">
+				Peel does not use analytics, telemetry, crash reporting, or advertising SDKs. No usage data is collected.
+			</p>
 
-			<section class="space-y-3 mb-10">
-				<h2 class="text-xl font-semibold tracking-tight">Children</h2>
-				<p class="text-base leading-relaxed">
-					Peel is not directed at children under 13 and does not knowingly collect any data from them.
-				</p>
-			</section>
+			<h2 class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight mt-12">Children</h2>
+			<p class="leading-7 mt-6">
+				Peel is not directed at children under 13 and does not knowingly collect data from them.
+			</p>
 
-			<section class="space-y-3 mb-10">
-				<h2 class="text-xl font-semibold tracking-tight">Changes to this policy</h2>
-				<p class="text-base leading-relaxed">
-					If this policy changes, the updated version will be posted on this page with a new "Last updated" date.
-				</p>
-			</section>
+			<h2 class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight mt-12">Changes to this policy</h2>
+			<p class="leading-7 mt-6">
+				If this policy is updated, the revised version will be posted on this page with a new "Last updated" date.
+			</p>
 
-			<section class="space-y-3 mb-10">
-				<h2 class="text-xl font-semibold tracking-tight">Contact</h2>
-				<p class="text-base leading-relaxed">
-					Questions or concerns? Email <a href="mailto:hey@douglaslassance.me" class="underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground transition-colors">hey@douglaslassance.me</a>.
-				</p>
-			</section>
+			<h2 class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight mt-12">Contact</h2>
+			<p class="leading-7 mt-6">
+				For questions or concerns, please contact <a href="mailto:peel@douglaslassance.me" class="font-medium underline underline-offset-4">peel@douglaslassance.me</a>.
+			</p>
 		</main>
 
 		<footer class="p-8">
@@ -107,7 +89,9 @@ const lastUpdated = "May 2, 2026";
 					© 2026 <a href="https://douglaslassance.me" target="_blank" rel="noopener" class="underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground transition-colors">Douglas Lassance</a>
 				</p>
 				<div class="flex gap-4 items-center">
-					<a href="/" class="text-sm text-muted-foreground underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground transition-colors">Home</a>
+					<a href="/" class="opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-200" aria-label="Home">
+						<House size={20} strokeWidth={1.5} />
+					</a>
 				</div>
 			</div>
 		</footer>

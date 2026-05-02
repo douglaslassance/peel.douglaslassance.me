@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { Search, FileText, Image, LayoutGrid, Tags } from 'lucide-svelte';
+import { Search, FileText, Image, LayoutGrid, Tags, HatGlasses } from 'lucide-svelte';
 import ThemeToggle from '../components/ThemeToggle.svelte';
 import CopyButton from '../components/CopyButton.svelte';
 import FeatureCard from '../components/FeatureCard.svelte';
@@ -115,7 +115,9 @@ const brewCommand = "brew install douglaslassance/tap/peel";
 					© 2026 <a href="https://douglaslassance.me" target="_blank" rel="noopener" class="underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground transition-colors">Douglas Lassance</a>
 				</p>
 				<div class="flex gap-4 items-center">
-					<a href="/privacy" class="text-sm text-muted-foreground underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground transition-colors">Privacy</a>
+					<a href="/privacy" class="opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-200" aria-label="Privacy">
+						<HatGlasses size={20} strokeWidth={1.5} />
+					</a>
 					<a href="https://douglaslassance.gumroad.com/l/peel-pro" target="_blank" rel="noopener" class="opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-200" aria-label="Buy on Gumroad (opens in new window)">
 						<img src="/gumroad.svg" alt="" width="24" height="24" class="icon-invert" />
 					</a>
