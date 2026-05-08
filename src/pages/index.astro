@@ -65,25 +65,28 @@ const brewCommand = "brew install douglaslassance/tap/peel";
 
 			<!-- Features Section -->
 			<div class="w-full max-w-4xl mx-auto px-8 pt-6 pb-16">
-				<!-- Screenshot flowing out of the top of the hero card -->
-				<div class="screenshot-flowout relative z-10 -mb-[180px] md:-mb-[260px] animate-fade-in-up" data-delay="0.15s">
-					<img src="/screenshot-light.png" alt="Peel app showing tags sidebar and a masonry grid of media" class="block w-full h-auto dark:hidden" />
-					<img src="/screenshot-dark.png" alt="Peel app showing tags sidebar and a masonry grid of media" class="hidden w-full h-auto dark:block" />
-				</div>
+				<!-- Screenshot + hero card react together on hover -->
+				<div class="group mb-6">
+					<!-- Screenshot flowing out of the top of the hero card -->
+					<div class="screenshot-flowout relative z-10 -mt-[5px] -mb-[180px] md:-mb-[260px] animate-fade-in-up group-hover:-translate-y-1 transition-transform duration-300" data-delay="0.15s">
+						<img src="/screenshot-light.png" alt="Peel app showing tags sidebar and a masonry grid of media" class="block w-full h-auto dark:hidden" />
+						<img src="/screenshot-dark.png" alt="Peel app showing tags sidebar and a masonry grid of media" class="hidden w-full h-auto dark:block" />
+					</div>
 
-				<!-- Hero Card -->
-				<div class="mb-6 animate-fade-in-up" data-delay="0.3s">
-					<Card>
-						<CardContent class="flex flex-col px-5 gap-3 pt-[130px] md:pt-[180px]">
-							<div class="flex items-center gap-2">
-								<span class="inline-flex size-4 shrink-0 items-center justify-center text-foreground/50" aria-hidden="true">
-									<Search size={16} strokeWidth={1.5} />
-								</span>
-								<h2 class="text-sm font-semibold leading-none">Browse different</h2>
-							</div>
-							<p class="text-sm text-muted-foreground leading-relaxed">{description}</p>
-						</CardContent>
-					</Card>
+					<!-- Hero Card -->
+					<div class="animate-fade-in-up group-hover:-translate-y-1 transition-transform duration-300" data-delay="0.3s">
+						<Card>
+							<CardContent class="flex flex-col px-5 gap-3 pt-[130px] md:pt-[180px]">
+								<div class="flex items-center gap-2">
+									<span class="inline-flex size-4 shrink-0 items-center justify-center text-foreground/50" aria-hidden="true">
+										<Search size={16} strokeWidth={1.5} />
+									</span>
+									<h2 class="text-sm font-semibold leading-none">Browse different</h2>
+								</div>
+								<p class="text-sm text-muted-foreground leading-relaxed">{description}</p>
+							</CardContent>
+						</Card>
+					</div>
 				</div>
 
 				<!-- Feature Grid -->
