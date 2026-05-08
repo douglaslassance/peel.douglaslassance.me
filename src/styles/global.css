@@ -137,3 +137,8 @@
 [data-delay="0.3s"]  { animation-delay: 0.3s; }
 [data-delay="0.45s"] { animation-delay: 0.45s; }
 [data-delay="0.6s"]  { animation-delay: 0.6s; }
+
+.screenshot-flowout {
+  -webkit-mask-image: linear-gradient(to top, transparent 15%, black 45%);
+          mask-image: linear-gradient(to top, transparent 15%, black 45%);
+}
