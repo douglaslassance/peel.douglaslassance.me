@@ -5,6 +5,7 @@ import ThemeToggle from '../components/ThemeToggle.svelte';
 import CopyButton from '../components/CopyButton.svelte';
 import FeatureCard from '../components/FeatureCard.svelte';
 import { Card, CardContent } from '$lib/components/ui/card/index.js';
+import { Button } from '$lib/components/ui/button/index.js';
 
 const description = "Peel transforms how you browse your files. By handling tags like folders, you retain all their flexibility while not compromising on discoverability.";
 const brewCommand = "brew install douglaslassance/tap/peel";
@@ -101,8 +102,14 @@ const brewCommand = "brew install douglaslassance/tap/peel";
 			<!-- Download Section -->
 			<div class="w-full max-w-4xl mx-auto px-8 pb-16 animate-fade-in-up" data-delay="0.6s">
 				<div class="text-center max-w-2xl mx-auto">
+					<div class="flex justify-center mb-6">
+						<Button href="https://apps.apple.com/app/id6760927457" size="lg" target="_blank" rel="noopener" aria-label="Download Peel on the App Store (opens in new window)">
+							<img src="/apple.svg" alt="" aria-hidden="true" class="size-4 icon-button-primary" />
+							Download on App Store
+						</Button>
+					</div>
 					<h2 class="text-sm font-medium text-muted-foreground mb-3">
-						Install with <a href="https://brew.sh/" class="text-foreground underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground transition-colors">Homebrew</a>
+						or install with <a href="https://brew.sh/" class="text-foreground underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground transition-colors">Homebrew</a>
 					</h2>
 					<div class="flex items-center justify-between bg-card ring-1 ring-foreground/10 rounded-lg px-4 py-3 mx-auto max-w-lg">
 						<code class="flex-1 text-left font-mono text-sm">{brewCommand}</code>

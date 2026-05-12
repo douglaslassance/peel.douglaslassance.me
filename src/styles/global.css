@@ -123,6 +123,33 @@
   filter: brightness(0) invert(1);
 }
 
+.icon-button-primary {
+  filter: brightness(0) invert(1);
+}
+
+.dark .icon-button-primary {
+  filter: brightness(0) saturate(100%);
+}
+
+/* Pro badge uses the OS accent color, with a graceful blue fallback. */
+.pro-badge {
+  background-image: linear-gradient(
+    to bottom,
+    color-mix(in oklab, AccentColor 100%, white 12%),
+    color-mix(in oklab, AccentColor 100%, black 10%)
+  );
+  box-shadow: 0 10px 15px -3px color-mix(in oklab, AccentColor 30%, transparent),
+    0 4px 6px -4px color-mix(in oklab, AccentColor 30%, transparent);
+}
+
+@supports not (background: AccentColor) {
+  .pro-badge {
+    background-image: linear-gradient(to bottom, oklch(0.62 0.18 250), oklch(0.55 0.2 250));
+    box-shadow: 0 10px 15px -3px oklch(0.55 0.2 250 / 0.3),
+      0 4px 6px -4px oklch(0.55 0.2 250 / 0.3);
+  }
+}
+
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }

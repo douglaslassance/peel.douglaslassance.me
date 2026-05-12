@@ -28,7 +28,7 @@
 			target="_blank"
 			rel="noopener"
 			aria-label="Pro feature — available with Peel Pro"
-			class="absolute -top-2 -right-2 inline-flex items-center justify-center px-2.5 py-1 rounded-md text-[10px] font-bold tracking-wider text-white bg-gradient-to-b from-blue-500 to-blue-600 shadow-lg shadow-blue-600/30 ring-1 ring-inset ring-white/20 hover:scale-105 transition-transform duration-200"
+			class="pro-badge absolute -top-2 -right-2 inline-flex items-center justify-center px-2.5 py-1 rounded-md text-[10px] font-bold tracking-wider text-white ring-1 ring-inset ring-white/20 hover:scale-105 transition-transform duration-200"
 		>
 			PRO
 		</a>
